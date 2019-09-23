@@ -1,3 +1,6 @@
 * About
 These are notes taken at the one-day workshop by Anton-Paar held at IIT Kanpur
 on the twenty-third of September in 2019.
+** Credits
+Apart from Dr. Thomas, I really would not have attended this but for
+the support of the organizer, Dr. Debjani Banerjee. 
