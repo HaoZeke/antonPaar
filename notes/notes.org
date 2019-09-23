@@ -150,10 +150,10 @@
 #+LATEX_HEADER: \pagestyle{fancy}
 #+LATEX_HEADER: \fancyhead{}
 #+LATEX_HEADER: \fancyfoot{}
-#+LATEX_HEADER: \lhead{Surface Area and Porous Material Characterization}
+#+LATEX_HEADER: \lhead{Surface Area and Porous Material Characterization by Dr. Thomas}
 #+LATEX_HEADER: \chead{}
 #+LATEX_HEADER: \rhead{\today}
-#+LATEX_HEADER: \lfoot{Rohit Goswami \textsc{\scriptsize\ MInstP AMIChemE AMIE}}
+#+LATEX_HEADER: \lfoot{Compiled by Rohit Goswami \textsc{\scriptsize\ MInstP AMIChemE AMIE}}
 #+LATEX_HEADER: \cfoot{}
 #+LATEX_HEADER: \rfoot{\thepage}
 #+LATEX_HEADER: \renewcommand{\headrulewidth}{0.4pt}
@@ -565,11 +565,6 @@ So in the same microporous systems, we can see that the non wetting system
 behave differently. Essentially for these systems, the water isotherm is a
 better classifier. The surface chemistry can be investigated by the adsorption
 isoherms.
-
-# #+BEGIN_QUOTE
-# What does this surface chemistry have to do with the confinement and hastening
-# of phase transitions?
-# #+END_QUOTE
 
 In the mercury symmetry operations, the meniscus is actually already present.
 These other processes are dominated by the confinement effects. Therefore it is
