@@ -200,7 +200,7 @@
 \vfill
 \noindent {\huge \textbf{\textsf{Surface Area and Porous Material Characterization}}}
 \vskip 1em
-{\Large \textsf{Short Course Notes}}
+{\Large \textsf{Notes from Martin Thomas' Short Course}}
 \vskip 2em
 \noindent
 {\Large \textsf{\MakeUppercase{Rohit Goswami,\textsc{\scriptsize\ MInstP AMIChemE AMIE}}}
@@ -435,7 +435,8 @@ popular since it chemisorbs to a lot of metals. Since it forms a hydride
 sometimes, there is some "solubility" in the metal, so the adsorbed gas may not
 actually be localized on the surface. Typically where hydride formation is an
 issue, CO is used. Twice as many CO moleculas are adsorbed compared to H_2 for
-Platinum.
+Platinum. Multiple isotherms can be used to get the heat of adsorption and
+correlate them to the acid site strength.
 
 #+caption: Metals and Reactive Gases for Chemisorption
 | Metal | Reactive gas | Comment                                                 |
@@ -456,10 +457,150 @@ cases in the literature they use the number of atoms reating per molecule, so
 that is half. When we consider CO, it may be one or bridged, and therefore two.
 At low pressures of Co, the bridged system is more likely, so as the pressure
 increases, it is reasonable to assume a steric geometry of one.
-** Setup
+** Setup and Quantification
 The volumetric version of the equipment is usually the same as that used for
-physisorption.
+physisorption. A flow of reactive gas is used to get rid of water as well.
 
+We try to stay close to the critical temperature for chemisorption studies.
+In theory, after a layer is chemisorbed there is only pressure created over the
+surface with the addition of gas after saturation. The first isotherm is
+generated, then the system is evacuated, and another isotherm is plotted. Now
+since we have not changed the temperature, to remove the extra effects which may
+be in the system, the second isotherm is the weak, reverible isotherm. Thus we
+can not calculate the strong or irreversibly adsorbed isotherm. To get the
+amount we can do a simple least squares extrapolation to get the volume
+adsorbed. The strongly adsorbed isotherm is considered to be pressure
+independent. A cheisorption isotherm will typically have a much smaller number
+of points, since it's essentially a straight line generation. Ten is a
+reasonable default. It's much faster than physisorption of course. The exotherm
+in chemisorption is unlikely to cause any changes while for physisorption a the
+exothermic energy might cause the neighboring molecules to pop off. Close to the
+desorption temperature there might be some curvature for chemisorption as well.
+
+*** Flow Methods
+Pulse titration is also used. Typically, the gas is pulsed (fixed volumes are
+injected, typically 100 micro liters), in a carrier which is typically N_2 or
+He. Helium is common for carbon systems. Downstream, a TCD is used to analyze
+the rest of the stuff. The process is isothermal but an isotherm is not
+generated. Reversible adsorption esorbs after the puslse has passed. The weakly
+adsorbed gases are swept away, and so not reversible equilibruim with the rest
+of the surface. The TCD reacts to what was not taken up by the sample. Peak
+integration is done to figure out how much was adsorbed. The difference between
+the peak areas is used to figure out how much has been adsorbe. Sometimes the
+peaks overlap when there isn't enough of a delay between the pulses. Weaker
+pulses have more tailing. Upto six partial peaks are usually relevant.
+For some systems like Pd/Ni where H and CO might not be a good fit to either Pd
+or Ni, typically both are used. Flow techniques are also better for such systems
+too. In bimetallics it is very difficult to create situations where one is
+adsorbing and the other is not.
+** Sample Preparation
+The system has to be activated. Not just dried. Most samples are oxidized metals
+so they need to be reduced with a suitable gas to the active state at elevated
+temperatures, and then it needs to be purged and cooled. This is usually in a
+u-shaped flow pattern cell. Unlike physisorption, preparation is done in-situ at
+the analysis port under flowing gas conditions. The setup is easier for
+chemisorption than physisorption in terms of protocols.
+
+*** Flow Methods
+Typically 300K might be a good start, but not always. Nickel luminate needs
+around 600K. Most plants which use steam reforming don't have temperatures that
+high, so any nickel-luminate created is lost. So with a TPR you can figure out
+what you can't from just a total nickel analysis.
+- Oxide reducibility by TPR
+- Carbon oxidaion
+- Acid site concentration by TPD
+- Activation Energy
+
+You can determine the nature of an acide ste by swamping the system in ammonia,
+then heat it until it gets off.
+
+*** TPR (Temperature Promgrammed Reduction)
+Water is the main product of the reaction and can be removed from the gas flow
+using a cold trap prior to the detector for a clean TCD signal. The exact shape
+of the distribution depends on the amount of sample as well.
+- Cerium IV oxide
+- Nickel oxide
+- Iron oxide
+- Cobalt oxide
+Aluminum oxide won't reduce even at maximum instrument temperature.
+*** TPO (Temperature Programmed Oxidation)
+Similar to TPR in that a gas mixture dilute in the reacting gas is passed over
+the sample as the temperature is increased in a liner fasion. The main products
+are CO and CO_2. These are not trapped and allowed to go through.
+- Carbon Nanotubes
+- Cerium III oxide
+- Coke on catalysts
+- Pre-reduced metals
+Spikes in these curves may be due to the catalyst being left in the product.
+*** TPD (Temperature Programmed Desorption)
+Can also be decomposition. The only way to be really sure of all the products is
+a down-stream mass spectrometer but this is typically overkill.
+- Acid sites (NH_3)
+- Basic sites (with CO_2)
+- Methanol from reactive oxides
+- Hydrogen form hydrides
+It is assumed that they are Bronsted sites, but is not typically proven with
+pyridine methods.
+* Lec 3: Special Topics, Water
+Water absorption is interesting due to the difficulty in classication in terms
+of the ambigous nature of the bond (H-bonding). Water at 25C in mesoporous
+carbon (micro mesoporous) then water is of Type V, while Nitrogen at 77.4K is
+Type IV. The nitrogen has large sections which are basically accessible via
+necks. For water, the isotherm creeps along the P/Po. Basically Nitrogen forms a
+wetting isotherm, and water on carbon is a non-wetting isotherm for a while.
+Water has *delayed* micropore filling. For nitrogen, micropore pressure takes
+place at very low pressures. Water is smaller than nitrogen, so it does enter
+pores which nitrogen will always ignore. Since it is non wetting on carbon, the
+micropore will fill *after* the mesopore. The hysteresis has been suspected to
+be through a cooperative mechanism, that is through the hydrogen bonds. The pore
+space fills with a dense phase of a vapor without any of it getting on the
+surface. Essentially these are confined systems.
+
+** Nitrogen
+There is no characteristic microporous filling for nitrogen at 77K, this is
+because the pore sizes are approximate. There are crosses, even when considering
+DFT systems.
+** Water
+So in the same microporous systems, we can see that the non wetting system
+behave differently. Essentially for these systems, the water isotherm is a
+better classifier. The surface chemistry can be investigated by the adsorption
+isoherms.
+
+# #+BEGIN_QUOTE
+# What does this surface chemistry have to do with the confinement and hastening
+# of phase transitions?
+# #+END_QUOTE
+
+In the mercury symmetry operations, the meniscus is actually already present.
+These other processes are dominated by the confinement effects. Therefore it is
+not the standard wetting-dewetting situations.
+Consider Periodic Mesoporous Organosilicas
+
+Two PMO materials with identical pore size, different organic molecules lead to
+different surface chemistry for the two PMOs, the differences in water
+adsorption isoterms due to differences in surface chemistry.
+Essentially, though we can get pore *volume*, we cannot get pore *size*.
+
+Multiple runs of reversible and irreversible adsorption.
+Dehydrogxilated silica is hydrophobic. Pure siilica is hydrophobic.
+Essentially we can track the hydroxylation on the surface. So we start with an
+irreversible isotherm hysteresis, which increasing becomes more likea
+traditional revirsible hysteresis. This is also due to the thermal treatment of
+the silica itself. Only above 500C will silica start to de-hydroxylate. This
+also makes the pore loose structural integrity, since by then you'd be over the
+softening point, if not the melting point. Typically, organic materials can be
+used instead of water vapor. e.g. RH sensors are often mesopourous silica. In
+silicas this process modifies the optical properties as well.
+
+Email: [[mailto:martin.thomas@anton-paar.com][martin.thomas[at]anton-paar.com]]
+
+
+J. Rathousky, M. Thommes, Stud. Surf. Sci. Catal. 2007
+Morell, J;Wolter, G; Froeba M
+Thommes M; Morell J; Cychosz, K A; Froeba, M
+Zhang K. et al, languir 2012, 28, 8664-8673
+Thommes, M; Morell, J.; Cychosz, K.A; Froeba, M. Languir 2013
+Thommes, M, C. moriay, R. Ahmad, J.P. Joly, Adsorption 2011
 # Local Variables:
 # after-save-hook: haozeke/org-save-and-export-pdf
 # End:
