@@ -1,0 +1,654 @@
+% Created 2019-09-23 Mon 15:32
+% Intended LaTeX compiler: xelatex
+\documentclass[12pt,a4paper,oneside,headinclude]{scrartcl}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{minted}
+\PassOptionsToPackage{unicode=true}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*,table}{xcolor}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{physics}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
+\usepackage{unicode-math}
+\defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{hyperref}
+\hypersetup{
+pdftitle={Surface Area and Porous Material Characterization},
+pdfauthor={Rohit Goswami},
+pdfborder={0 0 0},
+breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{longtable,booktabs}
+% Fix footnotes in tables (requires footnote package)
+\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{longtable}}{}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+% Make use of float-package and set default placement for figures to H
+\usepackage{float}
+\floatplacement{figure}{H}
+\numberwithin{figure}{section}
+\numberwithin{equation}{section}
+\numberwithin{table}{section}
+\makeatletter
+\@ifpackageloaded{subfig}{}{\usepackage{subfig}}
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\captionsetup[subfloat]{margin=0.5em}
+\AtBeginDocument{%
+\renewcommand*\figurename{Figure}
+\renewcommand*\tablename{Table}
+}
+\AtBeginDocument{%
+\renewcommand*\listfigurename{List of Figures}
+\renewcommand*\listtablename{List of Tables}
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\makeatother
+\usepackage[dvipsnames,svgnames*,x11names*,table]{xcolor}
+\definecolor{listing-background}{HTML}{F7F7F7}
+\definecolor{listing-rule}{HTML}{B3B2B3}
+\definecolor{listing-numbers}{HTML}{B3B2B3}
+\definecolor{listing-text-color}{HTML}{000000}
+\definecolor{listing-keyword}{HTML}{435489}
+\definecolor{listing-identifier}{HTML}{435489}
+\definecolor{listing-string}{HTML}{00999A}
+\definecolor{listing-comment}{HTML}{8E8E8E}
+\definecolor{listing-javadoc-comment}{HTML}{006CA9}
+\usepackage{pagecolor}
+\usepackage{afterpage}
+\setcounter{tocdepth}{3}
+\usepackage{setspace}
+\setstretch{1.2}
+\usepackage{csquotes}
+\usepackage[font={small,it}]{caption}
+\newcommand{\imglabel}[1]{\textbf{\textit{(#1)}}}
+\definecolor{blockquote-border}{RGB}{221,221,221}
+\definecolor{blockquote-text}{RGB}{119,119,119}
+\usepackage{mdframed}
+\newmdenv[rightline=false,bottomline=false,topline=false,linewidth=3pt,linecolor=blockquote-border,skipabove=\parskip]{customblockquote}
+\renewenvironment{quote}{\begin{customblockquote}\list{}{\rightmargin=0em\leftmargin=0em}%
+\item\relax\color{blockquote-text}\ignorespaces}{\unskip\unskip\endlist\end{customblockquote}}
+\definecolor{heading-color}{RGB}{40,40,40}
+\addtokomafont{section}{\color{heading-color}}
+\usepackage{titling}
+\renewcommand{\arraystretch}{1.3} % table spacing
+\definecolor{table-row-color}{HTML}{F5F5F5}
+\rowcolors{3}{}{table-row-color!100}
+% Reset rownum counter so that each table starts with the same row color
+\let\oldlongtable\longtable
+\let\endoldlongtable\endlongtable
+\renewenvironment{longtable}{\oldlongtable} {
+\endoldlongtable
+\global\rownum=0\relax}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\lhead{Surface Area and Porous Material Characterization by Dr. Thomas}
+\chead{}
+\rhead{\today}
+\lfoot{Compiled by Rohit Goswami \textsc{\scriptsize\ MInstP AMIChemE AMIE}}
+\cfoot{}
+\rfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+% When using the classes report, scrreprt, book,
+% scrbook or memoir, uncomment the following line.
+%\addtokomafont{chapter}{\color{heading-color}}
+\usepackage[default]{sourcesanspro}
+\usepackage{sourcecodepro}
+\usepackage[margin=2.5cm,includehead=true,includefoot=true,centering]{geometry}
+\author{Rohit Goswami\textsc{\scriptsize\ MInstP AMIChemE AMIE}}
+\date{\today}
+\title{Surface Area and Porous Material Characterization\\\medskip
+\large Notes from Martin Thomas' Short Course}
+\hypersetup{
+ pdfauthor={Rohit Goswami\textsc{\scriptsize\ MInstP AMIChemE AMIE}},
+ pdftitle={Surface Area and Porous Material Characterization},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 26.3 (Org mode 9.1.9)}, 
+ pdflang={English}}
+\begin{document}
+
+\begin{titlepage}
+\newgeometry{left=6cm}
+\definecolor{titlepage-color}{HTML}{06386e}
+\newpagecolor{titlepage-color}\afterpage{\restorepagecolor}
+\newcommand{\colorRule}[3][black]{\textcolor[HTML]{#1}{\rule{#2}{#3}}}
+\begin{flushleft}
+\noindent
+\\[-1em]
+\color[HTML]{ffffff}
+\makebox[0pt][l]{\colorRule[ffffff]{1.3\textwidth}{1pt}}
+\par
+\noindent
+
+{ \setstretch{1.4}
+\vfill
+\noindent {\huge \textbf{\textsf{Surface Area and Porous Material Characterization}}}
+\vskip 1em
+{\Large \textsf{Notes from Martin Thomas' Short Course}}
+\vskip 2em
+\noindent
+{\Large \textsf{\MakeUppercase{Rohit Goswami,\textsc{\scriptsize\ MInstP AMIChemE AMIE}}}
+\vfill
+}
+
+\textsf{\today}}
+\end{flushleft}
+\end{titlepage}
+\restoregeometry
+
+\tableofcontents
+\newpage
+
+\section{Lec I: Physisorption and Basic Measurements}
+\label{sec:org0e72d53}
+Dr. Martin A. Thomas is the speaker for the day.
+\begin{itemize}
+\item Surface Area
+\item Catalysis
+\end{itemize}
+\subsection{Essential Techniques}
+\label{sec:org43c0fba}
+\begin{itemize}
+\item Surface area
+\item Pore size distribution
+\item Catalyst active area/dispersion
+\item TPR and other flow materials
+\end{itemize}
+\subsection{Surface Area}
+\label{sec:org670977b}
+For the purposes of this scale, the geometric extent of the interface between
+two materials in any phase would be the surface area. Surface area measurement
+is useful for a variety of situations:
+\begin{itemize}
+\item Reveals an excess of fines that PSA cannot
+\item Can distinguish between different morphologies of similar size
+\item Can follow the generation of particle-particle bonds
+Typically van-der-waals but under certain temperature and pressure can cause sintering which would be "true" bonds in
+\end{itemize}
+terms of ionic and covalent bonds.
+\begin{itemize}
+\item Temporal morphological stability
+\item Confirms brittle fracture under compression
+\item Tighter control on specifications of raw materials to avoid surprises during
+later processing
+\item Can explains unxepected dissolution behavior
+\end{itemize}
+\subsubsection{Discussion}
+\label{sec:orgbb06043}
+The PSA (particle size analysis) is not always of much use. Even the 90\%
+median measures may miss out on certain complexities which broaden or alter the
+spread without changing the median measures. The surface area considerations are
+significant then. Of course the surface area is most important when one
+considers porous materials. The surface as defined here extends through the bulk
+of the material due to the porosity.
+"Stickiness" is simply when the gravitational pull on the particle cannot
+overcome the molecule's attraction to the surface. The surface free energy is
+the amount avaliable for work. At the surface when the surface free energy
+increases, there is an increase in the dissolution rate. When the surface area
+decreases, the commiserate reduction in the surface free energy reduces
+dissolution while increasing strength. Especially when there is a liquid, the
+surface area is a very good measure of the liquid lost to the porosity.
+
+\subsection{Dissolution rate}
+\label{sec:orgf0c1078}
+The Noyes-whitney or the nerst-brunner equation is used for the dissolution rate:
+
+$$\frac{dW}{dt}=\frac{DA(C_S-C)}{L}$$
+\subsection{Pore Size}
+\label{sec:org18127c3}
+The pore size distribution is inversely proportion to the fluid adsorption.
+\subsubsection{Hierarchical Pore Stuctures}
+\label{sec:orgc1ca14b}
+Inspired by the lungs, the idea is to have progressively larger surface area
+with increasing depth.
+\subsubsection{Catalyst Turnover}
+\label{sec:org3389dbf}
+A general trend in the turnover, that is, the number of reactions which may
+occur at a reactive site is seen to be strongly correlated to the pore-size.
+\subsection{Gas Adsorption}
+\label{sec:orgedccf22}
+This is the only technique which directly mesasures and quantifies the surface
+area accurately. Hg intrusion is important too since it covers a wider range but
+then it isn't a really direct measure.
+The only biase is the sieving effect.
+
+IUPAC definitons:
+\begin{itemize}
+\item Micropore is less than 2nm
+\item Mesopore is between two to fifty nm
+\item Macropores are larger than 50nm
+\end{itemize}
+\subsubsection{Calculation mMethods}
+\label{sec:org5499efe}
+A small pore version is a stronger absorber. The pore causes the adsorption
+force to "focus" in a sense. LJ potential energy analysis shows that the
+entering molecules "see" more than one surface during adsorption. The isotherm
+is used to directly measure the gas interacting with a surface and within the pore.
+
+Gas adsorption goes upto 500nm. The BJH is a classical method based on the
+Kelvin equation. There are also DFT kernel methods.
+Smaller pore has lower pore filling pressure. The pore filling pressure is used
+to calculate the pore size and the extent of the surface. This also means we can
+get the pore volume. The pore size distribution is a volume distribution, not a
+spatial distribution.
+\begin{enumerate}
+\item Basics
+\label{sec:org643c0a2}
+We need to remember to have the saturation pressure in mind for physisorption.
+\end{enumerate}
+\subsubsection{Total Physisorption}
+\label{sec:org41e7d2b}
+This analyzes extensive ranges of physical properties. The BET surface area is
+the Brunnet-Emmet-Teller method. Typically the BET surface area is one of the
+total area. The T plot method is used in the multi-layer portion and is used to
+get the micropore distribution. The mesopore size distribution shows a hysteris
+curve from which information about the pore structure can be \textbf{qualitatively} obtained
+
+\subsection{Flow Analysis}
+\label{sec:org6a7eba9}
+Cooling is important to get the information required. The desorption peak is
+used to measure BET areas due to quick heating of the sample and get a sharper peak.
+\subsubsection{Vacuum Volumetric Principle}
+\label{sec:org79bb070}
+This is a manometric principle. The point is still to obtain the isoterm. So the
+construction involves a sample cell, cooled with liquid nitrogen. There is a
+evacuation system to ensure that the full isotherm can be obtained. The
+temperature (measured), volume (calibrated), and the pressure (controlled) in the manifold, the ideal
+gas law can be used to figure out the amount absorbed.
+
+Typically for surface area and pore size analysis:
+\begin{itemize}
+\item Nitrogen at 77K. For micropore size distribution for microporous carbons will
+take upto 2 hours. For zeolites, argon at 87K is about twice as fast.
+\item Argon at 87K. Is recommended by the IUPAC. This is very good for micropores
+because it is monoatomic, no orientation issues, is non-polar and inert
+(surface changes have no effect). Ar (87K) kinetics are faster than nitrogen
+at 77K (shorter equilibration times).
+\item CO\(_2\) at 273K. The polarization makes it unsuitable for zeolites. It is
+typically used for narrow pores in microporous carbons. Can get a micropore
+carbon in a few hours (4 to 6). A lot of this is because of the increased temperature.
+\item Krypton 77K or 87K for very low temperatatures since it is really expensive.
+Used when Nitrogen cannot be used.
+\end{itemize}
+\subsection{Practical Rules of Thumb}
+\label{sec:org16a326b}
+\subsubsection{Sample Cell Selection}
+\label{sec:org534c83d}
+The cell which minimizes the void volume is the right one. Overfilling risks
+elutriation. Larger void volumes will cause a loss in precision.
+ The smallest bulb which accomodates the optimal TSA but no more than two thirds full.
+\subsubsection{Minimize negative impact of cold volume}
+\label{sec:org6c74ed3}
+Coolant level controlled at the top creates a large cold zone. Coolant level
+controlled at the bottom causes a smaller cold zone.
+\subsubsection{Sample Preparation}
+\label{sec:org3c6008b}
+Degassing is normally done by heating under flow, or by using a vacuum. The highest temperature which
+will not ruin the material is what should be used. Ensure that the substance
+does not degrade. Flow methods will not be very good in some cases, namely
+because there is a water molecule in the pore which has to come out slowly.
+\subsubsection{Degassing Time}
+\label{sec:orgf5ed340}
+The complete time is by experimentation. Typically its sixteen hours, which is
+considered to be overnight. Samples that require low temperatures generally
+require the longest outgas times.
+\subsubsection{P/Po Range Selection}
+\label{sec:org8a7bddd}
+The multi-point BET is lower than the single point BET.
+\subsubsection{Micropore challenges}
+\label{sec:orgd1c5b42}
+Typically there are many extended range micropore stations each with a dedicated
+manifold and a complete set of transducers.
+\subsubsection{Data Reduction}
+\label{sec:org0ccee62}
+Micropores are upto the leveling out of the isotherms. Multilayer use the Tplot.
+The mesopore region is beyond that. Right at the top end is where the gas
+absorbs into the interparticle space. This is essentially a feature of the
+undefined interparticle sizes.
+
+IUPAC pores:
+\begin{itemize}
+\item Pores smaller than 2nm
+\item Supermicropores 0.7 to 2nm
+\item Ultramicropores are less than 0.7nm
+\end{itemize}
+
+The density of the absorbed gas is estimated to figure out geometric aspects of
+the pore being studied. Type four regions are essentially the macropore range.
+For micropores you need the data from ten to the power minus ten to see the
+micropore filling.
+
+For different P/Po the same micropores may be observed. Nitrogen's strong
+quadrupole shifts the pore filling to much lower P/Po. DFT can correct somewhat,
+but argon is much more reliable.
+Micropores usually have a turbo pump and a diaphragm pump.
+
+The take away is that pore filling pressure is directly proportional to the pore
+size diameter.
+
+\begin{itemize}
+\item Nitrogen is great for good for SA, Mesopore and total pore volume but not for
+\end{itemize}
+micropore sizes.
+\begin{itemize}
+\item Argon is recommended in all cases greater than 0.5nm because the gases listed
+are least affected by surface chemistry.
+\item Carbon dioxide cannot do anything other
+\end{itemize}
+
+\subsection{DFT}
+\label{sec:orgfdbfc54}
+Lowell, sheilds thomas and Thommes. Characterization of porous solids and
+powders.
+Neimark, Ravikovitch, Thammes, Carbon (2009)
+Thommes Cychosz, Neimark
+
+NLDFT skernel of metastable isotherms take into accound delays which may occur.
+
+M. Thommes. In Nanoporous Materials Science and engineering
+
+When there is a network defect, then there are ink-bottle pores, M. Thommes, B.
+Smarsly, M. Grenewold, Ravikovitch, Neimark, Langmuir 2001.
+
+\begin{quote}
+Rutgers University under Alex Neimark carries out much of the academic DFT calculations
+\end{quote}
+
+\begin{quote}
+For these systems, though earlier studies have used MC, DFT is actually faster.
+\end{quote}
+
+\begin{quote}
+The temperature effects (local heating due to the exothermic nature of
+adsorption) does cause a delay for accuracy, that is, the system is to be
+equilibrated and cannot be hastened.
+\end{quote}
+
+
+\section{Lec 2: Chemisorption}
+\label{sec:org47735fb}
+This is also known asn reactive gas adsorption. This is typically used to
+quantify the number of reactive sites. Silver catalysts are low dispersion.
+
+\begin{table}[htbp]
+\caption{Chemisorption}
+\centering
+\begin{tabular}{ll}
+Feature & Analysis\\
+Active Metal Area & TPR\\
+Dispersion & TPO\\
+Crysallite size & TPD\\
+Acid site concentration & Activation Energy\\
+Heat of adsorption & \\
+\hline
+\end{tabular}
+\end{table}
+
+The crystallite size is typically not the true size, except in some special
+systems. Protonated zeolites have acidic sites, and that is the visual metric
+used expressed as the amount of gas. There is no real conversion as there is no
+real surface area calculation.
+
+A wetting syste is such that the metal to the support affinity is higher than
+that of the metal-metal affinity. There may be steric hinderance, but
+essentially the wetting systems tend towards to spreading out over the surface.
+When there is less dispersion, the metal will tend to coagulate in lumps, which
+will cause some of the atoms to be not be accessible for reactions.
+
+Physorption areas and chemisorption areas are different. The cross sectional
+area is used for the physisorption, that is some 16 angstrom. The metal area
+does not use the area of the adsorbed gas. It uses the size of the absorbing
+site. The internuclear distance for the metal can also be used. The projected
+area estimates can vary.
+
+Forming a chemical bond does not require cryogenic conditions. Hydrogen is very
+popular since it chemisorbs to a lot of metals. Since it forms a hydride
+sometimes, there is some "solubility" in the metal, so the adsorbed gas may not
+actually be localized on the surface. Typically where hydride formation is an
+issue, CO is used. Twice as many CO moleculas are adsorbed compared to H\(_{\text{2}}\) for
+Platinum. Multiple isotherms can be used to get the heat of adsorption and
+correlate them to the acid site strength.
+
+\begin{table}[htbp]
+\caption{Metals and Reactive Gases for Chemisorption}
+\centering
+\begin{tabular}{lll}
+Metal & Reactive gas & Comment\\
+Pt & hydrogen, CO & Twice as many Co as H\(_{\text{2}}\)\\
+Pd & CO & Pd forms bulk hydrides, i.e. not limited to the surface\\
+Ni & Hydrogen & Ni forms carbonyls, not limited\\
+Fe & Hydrogen & Fe forms carbonyles, not limit to the surface\\
+Ag & Oxygen & At elevated temperatures\\
+\hline
+\end{tabular}
+\end{table}
+
+Ni may also be volatile enough to form a Ni mirror somewhere cooler.
+
+\subsection{Stochiometry}
+\label{sec:org7a84db3}
+The number of metal atoms per gas molecule. The instrument can measure how much
+gas is adsorbed. Normally it is assumed that hydrogen dissociates on the
+surface, so one hydrogen molecule will dissociate over two metal atoms. In some
+cases in the literature they use the number of atoms reating per molecule, so
+that is half. When we consider CO, it may be one or bridged, and therefore two.
+At low pressures of Co, the bridged system is more likely, so as the pressure
+increases, it is reasonable to assume a steric geometry of one.
+\subsection{Setup and Quantification}
+\label{sec:org3afa21a}
+The volumetric version of the equipment is usually the same as that used for
+physisorption. A flow of reactive gas is used to get rid of water as well.
+
+We try to stay close to the critical temperature for chemisorption studies.
+In theory, after a layer is chemisorbed there is only pressure created over the
+surface with the addition of gas after saturation. The first isotherm is
+generated, then the system is evacuated, and another isotherm is plotted. Now
+since we have not changed the temperature, to remove the extra effects which may
+be in the system, the second isotherm is the weak, reverible isotherm. Thus we
+can not calculate the strong or irreversibly adsorbed isotherm. To get the
+amount we can do a simple least squares extrapolation to get the volume
+adsorbed. The strongly adsorbed isotherm is considered to be pressure
+independent. A cheisorption isotherm will typically have a much smaller number
+of points, since it's essentially a straight line generation. Ten is a
+reasonable default. It's much faster than physisorption of course. The exotherm
+in chemisorption is unlikely to cause any changes while for physisorption a the
+exothermic energy might cause the neighboring molecules to pop off. Close to the
+desorption temperature there might be some curvature for chemisorption as well.
+
+\subsubsection{Flow Methods}
+\label{sec:orgdb6e22e}
+Pulse titration is also used. Typically, the gas is pulsed (fixed volumes are
+injected, typically 100 micro liters), in a carrier which is typically N\(_{\text{2}}\) or
+He. Helium is common for carbon systems. Downstream, a TCD is used to analyze
+the rest of the stuff. The process is isothermal but an isotherm is not
+generated. Reversible adsorption esorbs after the puslse has passed. The weakly
+adsorbed gases are swept away, and so not reversible equilibruim with the rest
+of the surface. The TCD reacts to what was not taken up by the sample. Peak
+integration is done to figure out how much was adsorbed. The difference between
+the peak areas is used to figure out how much has been adsorbe. Sometimes the
+peaks overlap when there isn't enough of a delay between the pulses. Weaker
+pulses have more tailing. Upto six partial peaks are usually relevant.
+For some systems like Pd/Ni where H and CO might not be a good fit to either Pd
+or Ni, typically both are used. Flow techniques are also better for such systems
+too. In bimetallics it is very difficult to create situations where one is
+adsorbing and the other is not.
+\subsection{Sample Preparation}
+\label{sec:org749e52e}
+The system has to be activated. Not just dried. Most samples are oxidized metals
+so they need to be reduced with a suitable gas to the active state at elevated
+temperatures, and then it needs to be purged and cooled. This is usually in a
+u-shaped flow pattern cell. Unlike physisorption, preparation is done in-situ at
+the analysis port under flowing gas conditions. The setup is easier for
+chemisorption than physisorption in terms of protocols.
+
+\subsubsection{Flow Methods}
+\label{sec:org8de5b1a}
+Typically 300K might be a good start, but not always. Nickel luminate needs
+around 600K. Most plants which use steam reforming don't have temperatures that
+high, so any nickel-luminate created is lost. So with a TPR you can figure out
+what you can't from just a total nickel analysis.
+\begin{itemize}
+\item Oxide reducibility by TPR
+\item Carbon oxidaion
+\item Acid site concentration by TPD
+\item Activation Energy
+\end{itemize}
+
+You can determine the nature of an acide ste by swamping the system in ammonia,
+then heat it until it gets off.
+
+\subsubsection{TPR (Temperature Promgrammed Reduction)}
+\label{sec:org65d1b58}
+Water is the main product of the reaction and can be removed from the gas flow
+using a cold trap prior to the detector for a clean TCD signal. The exact shape
+of the distribution depends on the amount of sample as well.
+\begin{itemize}
+\item Cerium IV oxide
+\item Nickel oxide
+\item Iron oxide
+\item Cobalt oxide
+\end{itemize}
+Aluminum oxide won't reduce even at maximum instrument temperature.
+\subsubsection{TPO (Temperature Programmed Oxidation)}
+\label{sec:org16e0880}
+Similar to TPR in that a gas mixture dilute in the reacting gas is passed over
+the sample as the temperature is increased in a liner fasion. The main products
+are CO and CO\(_{\text{2}}\). These are not trapped and allowed to go through.
+\begin{itemize}
+\item Carbon Nanotubes
+\item Cerium III oxide
+\item Coke on catalysts
+\item Pre-reduced metals
+\end{itemize}
+Spikes in these curves may be due to the catalyst being left in the product.
+\subsubsection{TPD (Temperature Programmed Desorption)}
+\label{sec:org712d81d}
+Can also be decomposition. The only way to be really sure of all the products is
+a down-stream mass spectrometer but this is typically overkill.
+\begin{itemize}
+\item Acid sites (NH\(_{\text{3}}\))
+\item Basic sites (with CO\(_{\text{2}}\))
+\item Methanol from reactive oxides
+\item Hydrogen form hydrides
+\end{itemize}
+It is assumed that they are Bronsted sites, but is not typically proven with
+pyridine methods.
+\section{Lec 3: Special Topics, Water}
+\label{sec:orge1efda9}
+Water absorption is interesting due to the difficulty in classication in terms
+of the ambigous nature of the bond (H-bonding). Water at 25C in mesoporous
+carbon (micro mesoporous) then water is of Type V, while Nitrogen at 77.4K is
+Type IV. The nitrogen has large sections which are basically accessible via
+necks. For water, the isotherm creeps along the P/Po. Basically Nitrogen forms a
+wetting isotherm, and water on carbon is a non-wetting isotherm for a while.
+Water has \textbf{delayed} micropore filling. For nitrogen, micropore pressure takes
+place at very low pressures. Water is smaller than nitrogen, so it does enter
+pores which nitrogen will always ignore. Since it is non wetting on carbon, the
+micropore will fill \textbf{after} the mesopore. The hysteresis has been suspected to
+be through a cooperative mechanism, that is through the hydrogen bonds. The pore
+space fills with a dense phase of a vapor without any of it getting on the
+surface. Essentially these are confined systems.
+
+\subsection{Nitrogen}
+\label{sec:orgfe6b6e7}
+There is no characteristic microporous filling for nitrogen at 77K, this is
+because the pore sizes are approximate. There are crosses, even when considering
+DFT systems.
+\subsection{Water}
+\label{sec:org450b86b}
+So in the same microporous systems, we can see that the non wetting system
+behave differently. Essentially for these systems, the water isotherm is a
+better classifier. The surface chemistry can be investigated by the adsorption
+isoherms.
+
+In the mercury symmetry operations, the meniscus is actually already present.
+These other processes are dominated by the confinement effects. Therefore it is
+not the standard wetting-dewetting situations.
+Consider Periodic Mesoporous Organosilicas
+
+Two PMO materials with identical pore size, different organic molecules lead to
+different surface chemistry for the two PMOs, the differences in water
+adsorption isoterms due to differences in surface chemistry.
+Essentially, though we can get pore \textbf{volume}, we cannot get pore \textbf{size}.
+
+Multiple runs of reversible and irreversible adsorption.
+Dehydrogxilated silica is hydrophobic. Pure siilica is hydrophobic.
+Essentially we can track the hydroxylation on the surface. So we start with an
+irreversible isotherm hysteresis, which increasing becomes more likea
+traditional revirsible hysteresis. This is also due to the thermal treatment of
+the silica itself. Only above 500C will silica start to de-hydroxylate. This
+also makes the pore loose structural integrity, since by then you'd be over the
+softening point, if not the melting point. Typically, organic materials can be
+used instead of water vapor. e.g. RH sensors are often mesopourous silica. In
+silicas this process modifies the optical properties as well.
+
+Email: [[\url{mailto:martin.thomas@anton-paar.com}][martin.thomas[at]anton-paar.com]]
+
+
+J. Rathousky, M. Thommes, Stud. Surf. Sci. Catal. 2007
+Morell, J;Wolter, G; Froeba M
+Thommes M; Morell J; Cychosz, K A; Froeba, M
+Zhang K. et al, languir 2012, 28, 8664-8673
+Thommes, M; Morell, J.; Cychosz, K.A; Froeba, M. Languir 2013
+Thommes, M, C. moriay, R. Ahmad, J.P. Joly, Adsorption 2011
+\end{document}
